@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShareLoc - Share Files Instantly</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background: #0f172a; color: white; text-align: center; }
+header { padding: 20px; display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: auto; }
+.logo { font-size: 26px; font-weight: bold; color: #38bdf8; }
+nav a { color: white; text-decoration: none; margin-left: 20px; }
+.hero { padding: 80px 20px 50px; }
+.hero h1 { font-size: 48px; margin-bottom: 15px; }
+.hero h1 span { color: #38bdf8; }
+.hero p { color: #cbd5e1; font-size: 18px; max-width: 600px; margin: auto; }
+.box { background: white; color: #0f172a; max-width: 600px; margin: 40px auto; padding: 30px; border-radius: 16px; }
+.box h2 { margin-bottom: 15px; }
+input[type="file"] { margin: 15px 0; width: 100%; }
+button { background: #0ea5e9; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%; }
+button:hover { background: #0284c7; }
+#linkBox { margin-top: 15px; background: #f1f5f9; padding: 12px; border-radius: 8px; display: none; word-break: break-all; }
+.features { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+.card { background: #1e293b; padding: 25px; border-radius: 12px; flex: 1; min-width: 220px; }
+.card h3 { margin-bottom: 10px; color: #38bdf8; }
+footer { padding: 20px; color: #94a3b8; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">📍 ShareLoc</div>
+<nav>
+<a href="#">Home</a>
+<a href="#features">Features</a>
+<a href="#about">About</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Share Files <span>Instantly</span><br>From Anywhere</h1>
+<p>ShareLoc helps you share files, links and locations quickly and securely. No sign-up needed.</p>
+</div>
+
+<div class="box">
+<h2>Upload a File to Share</h2>
+<p>Select a file and get a shareable link</p>
+<input type="file" id="fileInput">
+<button onclick="generateLink()">Generate Share Link</button>
+<div id="linkBox"></div>
+</div>
+
+<div class="features" id="features">
+<div class="card"><h3>⚡ Fast</h3><p>Upload and share in seconds with a simple link.</p></div>
+<div class="card"><h3>🔒 Secure</h3><p>Your files are shared only with people who have the link.</p></div>
+<div class="card"><h3>🌍 Anywhere</h3><p>Works on mobile and desktop, from anywhere in the world.</p></div>
+</div>
+
+<footer>
+<p>© 2026 ShareLoc - shareloc.is-a.dev | Made by Omran Adam</p>
+</footer>
+
+<script>
+function generateLink() {
+  const input = document.getElementById('fileInput');
+  const box = document.getElementById('linkBox');
+  if (!input.files.length) { alert('Please select a file first'); return; }
+  const fileName = input.files[0].name;
+  const random = Math.random().toString(36).substring(2, 8);
+  box.style.display = 'block';
+  box.innerHTML = '✅ Your link is ready:<br><b>https://shareloc.is-a.dev/f/' + random + '-' + fileName + '</b><br><small>This is a demo link. Connect backend to enable real uploads.</small>';
+}
+</script>
+
+</body>
+</html>
